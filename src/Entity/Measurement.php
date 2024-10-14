@@ -16,7 +16,7 @@ class Measurement
 
     #[ORM\ManyToOne(inversedBy: 'measurements')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?location $location = null;
+    private ?Location $location = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]
     private ?\DateTimeInterface $date = null;
@@ -24,29 +24,17 @@ class Measurement
     #[ORM\Column(type: Types::DECIMAL, precision: 3, scale: '0')]
     private ?string $celsius = null;
 
-    #[ORM\Column(type: Types::DECIMAL, precision: 3, scale: '0')]
-    private ?string $pressure = null;
-
-    #[ORM\Column(type: Types::DECIMAL, precision: 3, scale: '0')]
-    private ?string $humidity = null;
-
-    #[ORM\Column(type: Types::DECIMAL, precision: 3, scale: '0')]
-    private ?string $percipitation = null;
-
-    #[ORM\Column(type: Types::DECIMAL, precision: 3, scale: '0')]
-    private ?string $windspeed = null;
-
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getLocation(): ?location
+    public function getLocation(): ?Location
     {
         return $this->location;
     }
 
-    public function setLocation(?location $location): static
+    public function setLocation(?Location $location): static
     {
         $this->location = $location;
 
@@ -77,51 +65,9 @@ class Measurement
         return $this;
     }
 
-    public function getPressure(): ?string
+    public function getFahrehneit(): ?string
     {
-        return $this->pressure;
-    }
-
-    public function setPressure(string $pressure): static
-    {
-        $this->pressure = $pressure;
-
-        return $this;
-    }
-
-    public function getHumidity(): ?string
-    {
-        return $this->humidity;
-    }
-
-    public function setHumidity(string $humidity): static
-    {
-        $this->humidity = $humidity;
-
-        return $this;
-    }
-
-    public function getPercipitation(): ?string
-    {
-        return $this->percipitation;
-    }
-
-    public function setPercipitation(string $percipitation): static
-    {
-        $this->percipitation = $percipitation;
-
-        return $this;
-    }
-
-    public function getWindspeed(): ?string
-    {
-        return $this->windspeed;
-    }
-
-    public function setWindspeed(string $windspeed): static
-    {
-        $this->windspeed = $windspeed;
-
-        return $this;
+        $fahrenheit = $this->celsius * 9 / 5 + 32;
+        return "$fahrenheit";
     }
 }
