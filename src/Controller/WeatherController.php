@@ -22,7 +22,8 @@ class WeatherController extends AbstractController
 
         $measurements = $repository->findByLocation($location);
 
-        dump($location);  
+        dump($measurements);
+        dump($location);
         
         return $this->render('weather/city.html.twig', [
             'location' => $location,
