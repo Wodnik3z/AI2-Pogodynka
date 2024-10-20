@@ -16,7 +16,7 @@ class Measurement
 
     #[ORM\ManyToOne(inversedBy: 'measurements')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?location $location = null;
+    private ?Location $location = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]
     private ?\DateTimeInterface $date = null;
@@ -41,12 +41,12 @@ class Measurement
         return $this->id;
     }
 
-    public function getLocation(): ?location
+    public function getLocation(): ?Location
     {
         return $this->location;
     }
 
-    public function setLocation(?location $location): static
+    public function setLocation(?Location $location): static
     {
         $this->location = $location;
 
