@@ -5,7 +5,59 @@
 {% block body %}
     <h1>Create new Measurement</h1>
 
-    {{ include('measurement/_form.html.twig') }}
+    <div class="container mt-4">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-body">
+                        {{ form_start(form, { 'attr': { 'class': 'form-horizontal' } }) }}
+                        
+                        <div class="form-group mb-3">
+                            {{ form_label(form.date, 'Date') }}
+                            {{ form_widget(form.date, { 'attr': {'class': 'form-control'} }) }}
+                            {{ form_errors(form.date) }}
+                        </div>
 
-    <a href="{{ path('app_measurement_index') }}">back to list</a>
+                        <div class="form-group mb-3">
+                            {{ form_label(form.celsius, 'Celsius') }}
+                            {{ form_widget(form.celsius, { 'attr': {'class': 'form-control'} }) }}
+                            {{ form_errors(form.celsius) }}
+                        </div>
+
+                        <div class="form-group mb-3">
+                            {{ form_label(form.pressure, 'Pressure') }}
+                            {{ form_widget(form.pressure, { 'attr': {'class': 'form-control'} }) }}
+                            {{ form_errors(form.pressure) }}
+                        </div>
+
+                        <div class="form-group mb-3">
+                            {{ form_label(form.humidity, 'Humidity') }}
+                            {{ form_widget(form.humidity, { 'attr': {'class': 'form-control'} }) }}
+                            {{ form_errors(form.humidity) }}
+                        </div>
+
+                        <div class="form-group mb-3">
+                            {{ form_label(form.percipitation, 'Percipitation') }}
+                            {{ form_widget(form.percipitation, { 'attr': {'class': 'form-control'} }) }}
+                            {{ form_errors(form.percipitation) }}
+                        </div>
+
+                        <div class="form-group mb-3">
+                            {{ form_label(form.windspeed, 'Wind Speed') }}
+                            {{ form_widget(form.windspeed, { 'attr': {'class': 'form-control'} }) }}
+                            {{ form_errors(form.windspeed) }}
+                        </div>
+
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary">Create</button>
+                        </div>
+
+                        {{ form_end(form) }}
+                    </div>
+                </div>
+
+                <a href="{{ path('app_measurement_index') }}" class="btn btn-secondary mt-3">Back to list</a>
+            </div>
+        </div>
+    </div>
 {% endblock %}
